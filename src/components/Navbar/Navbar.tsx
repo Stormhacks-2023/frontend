@@ -9,7 +9,7 @@ export default function Navbar() {
       {({ open }) => (
         <div className="mb-12">
           <div
-            className="fixed top-0 z-40 px-4 bg-white shadow max-w-screen-2xl dark:bg-white"
+            className="fixed opacity-70 hover:opacity-100 top-0 z-40 px-4 bg-white shadow max-w-screen-2xl dark:bg-white"
             style={{ width: '100%' }}
           >
             <div className="flex justify-between h-16">

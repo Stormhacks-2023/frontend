@@ -1,9 +1,8 @@
 import { Disclosure } from '@headlessui/react';
-import { useLocation, useNavigate } from '@tanstack/react-location';
+import { useNavigate } from '@tanstack/react-location';
 
 export default function Navbar() {
   const navigate = useNavigate();
-  // const location = useLocation();
 
   return (
     <Disclosure as="nav">
@@ -14,18 +13,57 @@ export default function Navbar() {
             style={{ width: '100%' }}
           >
             <div className="flex justify-between h-16">
+
+              {/* Navigation Links */}
               <div className="flex">
+
                 <div
                   role="link"
                   tabIndex={0}
-                  className="flex items-center flex-shrink-0 cursor-pointer"
+                  className="flex items-center flex-shrink-0 cursor-pointer ml-auto"
                   onClick={() => {
-                    navigate({ to: '/' });
+                    navigate({ to: '/home' });
                   }}
                 >
-                  <p className='text-white'>Navbar</p>
+                  <p className='text-black'>Home</p>
                 </div>
+                
+                <div
+                  role="link"
+                  tabIndex={0}
+                  className="flex items-center flex-shrink-0 cursor-pointer ml-4"
+                  onClick={() => {
+                    navigate({ to: '/help' });
+                  }}
+                >
+                  <p className='text-black'>Help</p>
+                </div>
+
+                <div
+                  role="link"
+                  tabIndex={0}
+                  className="flex items-center flex-shrink-0 cursor-pointer ml-4"
+                  onClick={() => {
+                    navigate({ to: '/about' });
+                  }}
+                >
+                  <p className='text-black'>About</p>
+                </div>
+
               </div>
+
+              {/* App Name */}
+              <div
+                role="link"
+                tabIndex={0}
+                className="flex items-center flex-shrink-0 cursor-pointer"
+                onClick={() => {
+                  navigate({ to: '/' });
+                }}
+              >
+                <p className='text-black'>App name here...</p>
+              </div>
+
             </div>
           </div>
         </div>

@@ -1,6 +1,6 @@
 import { Toaster } from "react-hot-toast";
 
-import { Suspense, lazy, useEffect } from "react";
+import { Suspense, lazy } from "react";
 import {
   Outlet,
   ReactLocation,
@@ -11,6 +11,7 @@ import {
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import routes from "./pages/routes";
+import backgroundImage from "./assets/backgroundImage.png";
 
 const Navbar = lazy(() => import("./components/Navbar"));
 
@@ -18,7 +19,10 @@ function App() {
   const navigate = useNavigate();
   const location = useLocation();
   return (
-    <div className="w-full min-h-screen bg-black">
+    <div
+      className="min-h-screen w-full"
+      style={{ background: `url(${backgroundImage})` }}
+    >
       <Toaster
         toastOptions={{
           style: {

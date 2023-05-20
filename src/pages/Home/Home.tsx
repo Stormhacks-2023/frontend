@@ -1,25 +1,19 @@
-import { useEffect, useState } from "react";
-import mapImage from "../../assets/vancouver2.png";
+import { useState } from "react";
 
 function Home() {
   const [text, setText] = useState<string>("");
   console.log(text);
   return (
-    <div className="min-h-screen w-full">
-      <div className="mt-2">
+    <div className="absolute top-20 flex w-full justify-center">
+      <div className="mt-2 w-[80%]">
         <input
           type="text"
-          className="h-10 w-full flex-1 rounded-xl border border-gray-400 bg-stone-800 px-5 text-gray-400 shadow focus:border-gray-500 focus:ring-gray-500"
+          className="h-10 w-full flex-1 rounded-xl border border-gray-400 bg-white px-5 text-gray-400 opacity-30 shadow focus:border-0 focus:opacity-100 focus:ring-gray-500"
           value={text}
           autoComplete="false"
           placeholder="Ask a question"
           onChange={(e) => setText(e.target.value)}
         />
-      </div>
-      <div className="mt-2 w-full">
-        <div className="p-10">
-          <img src={mapImage} className="flex items-center" />
-        </div>
       </div>
     </div>
   );

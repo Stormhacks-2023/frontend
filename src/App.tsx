@@ -18,7 +18,7 @@ function App() {
   const navigate = useNavigate();
   const location = useLocation();
   return (
-    <div className="w-full min-h-screen bg-black">
+    <div className="min-h-screen w-full bg-black">
       <Toaster
         toastOptions={{
           style: {

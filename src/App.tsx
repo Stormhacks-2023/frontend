@@ -11,7 +11,7 @@ import {
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import routes from "./pages/routes";
-import backgroundImage from "./assets/backgroundImage.png";
+import hikingVideo from "./assets/hiking-vid.mp4";
 
 const Navbar = lazy(() => import("./components/Navbar"));
 
@@ -19,10 +19,14 @@ function App() {
   const navigate = useNavigate();
   const location = useLocation();
   return (
-    <div
-      className="min-h-screen w-full"
-      style={{ background: `url(${backgroundImage})` }}
-    >
+    <div className="min-h-screen w-full">
+      <video
+        src={hikingVideo}
+        loop
+        autoPlay
+        muted
+        className="absolute h-[100%] w-[100%] object-cover"
+      />
       <Toaster
         toastOptions={{
           style: {
@@ -33,7 +37,7 @@ function App() {
         }}
       />
 
-      <div className="h-full px-4 py-8">
+      <div className="flex h-full items-center">
         <Suspense fallback={null}>
           <Navbar />
         </Suspense>

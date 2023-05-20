@@ -12,13 +12,13 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import routes from './pages/routes';
 
-// const Navbar = lazy(() => import('./components/Navbar'));
+const Navbar = lazy(() => import('./components/Navbar'));
 
 function App() {
   const navigate = useNavigate();
   const location = useLocation();
   return (
-    <div className="min-h-screen w-full bg-black">
+    <div className="min-h-screen w-full">
       <Toaster
         toastOptions={{
           style: {
@@ -28,11 +28,10 @@ function App() {
           },
         }}
       />
-
       <div className="h-full px-4 py-8">
-        {/* <Suspense fallback={null}>
+        <Suspense fallback={null}>
           <Navbar />
-        </Suspense> */}
+        </Suspense>
         <Suspense fallback={null}>
           <Outlet />
         </Suspense>

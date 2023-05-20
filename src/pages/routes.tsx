@@ -2,7 +2,6 @@ import { Route } from '@tanstack/react-location';
 
 import { Suspense, lazy } from 'react';
 import Home from './Home';
-import React from 'react';
 
 const routes: Route[] = [
   //   {

@@ -1,8 +1,14 @@
 import { useState } from "react";
+import { useKeyPress } from "../../hooks";
 
 function Home() {
   const [text, setText] = useState<string>("");
-  console.log(text);
+  const isEnterPressed = useKeyPress("Enter");
+
+  if (isEnterPressed) {
+    console.log(text);
+  }
+
   return (
     <div className="absolute top-20 flex w-full justify-center">
       <div className="mt-2 w-[80%]">

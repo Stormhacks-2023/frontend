@@ -61,7 +61,7 @@ export default function Navbar() {
                   navigate({ to: '/' });
                 }}
               >
-                <p className='text-black'>App name here...</p>
+                <img className="h-10 w-15" src="src\assets\hikingLogo.jpeg" alt="Flowers in Chania"/>
               </div>
 
             </div>

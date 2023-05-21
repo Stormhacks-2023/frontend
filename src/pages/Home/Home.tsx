@@ -39,7 +39,55 @@ function Home() {
           onChange={(e) => setText(e.target.value)}
         />
       </div>
-      <div className="mt-4">
+      <div className="mt-4 grid h-[590px] grid-cols-4 gap-2 overflow-y-scroll px-4">
+        <div className="bg-white" onClick={openModal}>
+          <img
+            src="https://stormhacks-2023-t5ql44yo2q-uw.a.run.app/images/burnaby_mountain.png"
+            className="cursor-pointer"
+          />
+        </div>
+        <div className="bg-white" onClick={openModal}>
+          <img
+            src="https://stormhacks-2023-t5ql44yo2q-uw.a.run.app/images/burnaby_mountain.png"
+            className="cursor-pointer"
+          />
+        </div>
+        <div className="bg-white" onClick={openModal}>
+          <img
+            src="https://stormhacks-2023-t5ql44yo2q-uw.a.run.app/images/burnaby_mountain.png"
+            className="cursor-pointer"
+          />
+        </div>
+        <div className="bg-white" onClick={openModal}>
+          <img
+            src="https://stormhacks-2023-t5ql44yo2q-uw.a.run.app/images/burnaby_mountain.png"
+            className="cursor-pointer"
+          />
+        </div>
+        <div className="bg-white" onClick={openModal}>
+          <img
+            src="https://stormhacks-2023-t5ql44yo2q-uw.a.run.app/images/burnaby_mountain.png"
+            className="cursor-pointer"
+          />
+        </div>
+        <div className="bg-white" onClick={openModal}>
+          <img
+            src="https://stormhacks-2023-t5ql44yo2q-uw.a.run.app/images/burnaby_mountain.png"
+            className="cursor-pointer"
+          />
+        </div>
+        <div className="bg-white" onClick={openModal}>
+          <img
+            src="https://stormhacks-2023-t5ql44yo2q-uw.a.run.app/images/burnaby_mountain.png"
+            className="cursor-pointer"
+          />
+        </div>
+        <div className="bg-white" onClick={openModal}>
+          <img
+            src="https://stormhacks-2023-t5ql44yo2q-uw.a.run.app/images/burnaby_mountain.png"
+            className="cursor-pointer"
+          />
+        </div>
         <div className="bg-white" onClick={openModal}>
           <img
             src="https://stormhacks-2023-t5ql44yo2q-uw.a.run.app/images/burnaby_mountain.png"

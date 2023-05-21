@@ -18,14 +18,10 @@ function MountainModal({ isOpen, setIsOpen, data }: IMountainDataProps) {
   const { data: iFrameList = [], isLoading: isIFrameListLoading } =
     useGetIFrameList();
 
-  console.log(iFrameList, isIFrameListLoading);
-
   const { data: animalListByMountain, isLoading: isAnimalListByMountain } =
     useGetAnimalListByMoutain("surrey_mountain");
 
   console.log(animalListByMountain, isAnimalListByMountain);
-
-  Object.keys(iFrameList).map((item, i) => console.log(iFrameList[item].id));
 
   return (
     <Transition.Root show={isOpen} as={Fragment}>
@@ -71,8 +67,8 @@ function MountainModal({ isOpen, setIsOpen, data }: IMountainDataProps) {
                       <img src={data.url}></img>
                       <div className="hidden max-h-[400px] overflow-y-scroll md:block">
                         {Object.keys(iFrameList).map((item) => (
-                          <div key={`${iFrameList[item]?.id}`}>
-                            <iframe
+                          <div key={`${iFrameList[item]?.id}`} className="mb-2 h-[60%]">
+                            <iframe className="w-[90%] h-[100%]"
                               src={
                                 `https://api.echo3d.com/webar?secKey=Izkby9ofQngS4y0HofpxZOAJ&key=wandering-tooth-7184&entry=` +
                                 `${iFrameList[item]?.id}`

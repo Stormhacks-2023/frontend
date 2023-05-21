@@ -1,13 +1,6 @@
 import { Toaster } from "react-hot-toast";
-
 import { Suspense, lazy } from "react";
-import {
-  Outlet,
-  ReactLocation,
-  Router,
-  useLocation,
-  useNavigate,
-} from "@tanstack/react-location";
+import { Outlet, ReactLocation, Router } from "@tanstack/react-location";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import routes from "./pages/routes";
@@ -16,8 +9,6 @@ import hikingVideo from "./assets/hiking-vid.mp4";
 const Navbar = lazy(() => import("./components/Navbar"));
 
 function App() {
-  const navigate = useNavigate();
-  const location = useLocation();
   return (
     <div className="min-h-screen w-full">
       <video

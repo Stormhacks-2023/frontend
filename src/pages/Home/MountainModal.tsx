@@ -1,6 +1,7 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import { XMarkIcon } from "@heroicons/react/24/solid";
+import { useGetIFrameList } from "../../queries";
 
 interface IMountainDataProps {
   isOpen: boolean;
@@ -12,6 +13,16 @@ function MountainModal({ isOpen, setIsOpen, data }: IMountainDataProps) {
   const closeModal = () => {
     setIsOpen(false);
   };
+  
+  const { data: iFrameList, isLoading: isIFrameListLoading } =
+  useGetIFrameList();
+
+  console.log(iFrameList, isIFrameListLoading);
+
+  if (!iFrameList) {
+    return <div></div>
+  }
+  
 
   return (
     <Transition.Root show={isOpen} as={Fragment}>
@@ -52,24 +63,21 @@ function MountainModal({ isOpen, setIsOpen, data }: IMountainDataProps) {
                     />
                   </Dialog.Title>
                   
-                  
                   <div className="grid grid-cols-2 justify-center">
                       <img
                         src={data.url}>
                       </img>
                       <div className="hidden md:block overflow-y-scroll max-h-[400px]">
-                        <div className="px-10 py-3">
-                          <iframe
-                          src="https://api.echo3d.com/webar?secKey=Izkby9ofQngS4y0HofpxZOAJ&key=wandering-tooth-7184&entry=9c5c57fd-dd22-421a-8e38-49d3a70a164a">
-                          </iframe>
+                      {iFrameList?.map((element) => (
+                      <div key={element.id} className="px-10 py-3">
+                        <iframe
+                          src={`https://api.echo3d.com/webar?secKey=Izkby9ofQngS4y0HofpxZOAJ&key=wandering-tooth-7184&entry=${element.id}`}
+                        ></iframe>
+                      </div>
+                    ))}
                         </div>
-                        <div className="px-10 py-3">
-                          <iframe
-                          src="https://api.echo3d.com/webar?secKey=Izkby9ofQngS4y0HofpxZOAJ&key=wandering-tooth-7184&entry=9c5c57fd-dd22-421a-8e38-49d3a70a164a">
-                          </iframe>
-                        </div>
-                      </div> 
-                    </div>
+                    </div> 
+                  
                 </div>
                
               </Dialog.Panel>

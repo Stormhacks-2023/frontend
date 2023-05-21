@@ -18,10 +18,9 @@ function Home() {
 
   // console.log(iFrameListByName, isIFrameListByNameLoading);
 
-  const { data: iFrameList, isLoading: isIFrameListLoading } =
-    useGetIFrameList();
+  const { data: iFrameList, isLoading: isIFrameListLoading } = useGetIFrameList();
 
-  console.log(iFrameList, isIFrameListLoading);
+  console.log(iFrameList);
 
   // const {
   //   data: iFrameListByTopography,

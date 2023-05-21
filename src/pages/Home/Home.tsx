@@ -22,7 +22,7 @@ function Home() {
   const [isTopologyModalOpen, setIsTopologyModalOpen] = useState(false);
   const [isRatingModalOpen, setIsRatingModalOpen] = useState(false);
 
-  const { data: mountainName } = useGetMountainByName(text);
+  const { data: mountainName } = useGetMountainByName(convertString(text));
 
   if (isEnterPressed) {
     console.log(text);
@@ -51,6 +51,12 @@ function Home() {
     toast.success("Opened modal");
     setIsRatingModalOpen(true);
   };
+
+  function convertString(str: string): string {
+    const lowerCaseStr = str.toLowerCase();
+    const replacedStr = lowerCaseStr.replace(/\s+/g, '_');
+    return replacedStr;
+  }
 
   return (
     <div className="absolute top-20 flex w-full flex-col items-center">

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const baseURL = "https://stormhacks-2023-ql67qndn2q-uw.a.run.app";
+export const baseURL = "https://stormhacks-2023-t5ql44yo2q-uw.a.run.app";
 
 const axiosInstance = axios.create({
   baseURL,

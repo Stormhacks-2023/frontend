@@ -17,7 +17,13 @@ function convertString(str: string): string {
 }
 
 function RatingModal({ isOpen, setIsOpen, data }: IRatingDataProps) {
-  const { data: ratingList } = useGetRatingOfMountain(convertString(data.text));
+  const { data: ratingList = [] } = useGetRatingOfMountain(
+    convertString(data.text)
+  );
+  console.log(
+    "🚀 ~ file: RatingModal.tsx:21 ~ RatingModal ~ ratingList:",
+    ratingList
+  );
 
   const closeModal = () => {
     setIsOpen(false);

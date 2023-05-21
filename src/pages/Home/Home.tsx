@@ -24,8 +24,6 @@ function Home() {
 
   const { data: mountainName } = useGetMountainByName(text);
 
-  console.log(mountainListName, isMountainListName);
-
   if (isEnterPressed) {
     console.log(text);
   }

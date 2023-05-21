@@ -27,6 +27,17 @@ export default function Navbar() {
                 >
                   <p className='text-black'>Home</p>
                 </div>
+
+                <div
+                  role="link"
+                  tabIndex={0}
+                  className="flex items-center flex-shrink-0 cursor-pointer ml-4"
+                  onClick={() => {
+                    navigate({ to: '/about' });
+                  }}
+                >
+                  <p className='text-black'>About</p>
+                </div>
                 
                 <div
                   role="link"
@@ -39,20 +50,9 @@ export default function Navbar() {
                   <p className='text-black'>Help</p>
                 </div>
 
-                <div
-                  role="link"
-                  tabIndex={0}
-                  className="flex items-center flex-shrink-0 cursor-pointer ml-4"
-                  onClick={() => {
-                    navigate({ to: '/about' });
-                  }}
-                >
-                  <p className='text-black'>About</p>
-                </div>
-
               </div>
 
-              {/* App Name */}
+              {/* App Logo */}
               <div
                 role="link"
                 tabIndex={0}

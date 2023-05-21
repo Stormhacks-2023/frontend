@@ -61,7 +61,7 @@ export default function Navbar() {
                   navigate({ to: '/' });
                 }}
               >
-                <img className="h-10 w-15" src="src\assets\hikingLogo.jpeg" alt="Flowers in Chania"/>
+                <img className="h-10 w-15" src="src\assets\hikingLogo.jpeg" alt="Website's Logo"/>
               </div>
 
             </div>

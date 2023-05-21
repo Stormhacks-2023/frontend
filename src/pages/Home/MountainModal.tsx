@@ -40,18 +40,38 @@ function MountainModal({ isOpen, setIsOpen, data }: IMountainDataProps) {
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
               <Dialog.Panel className="relative flex w-[70%] transform flex-col space-x-3 overflow-hidden bg-white px-4 pb-4 pt-5 shadow-xl transition-all sm:flex-row">
-                <div className="w-full sm:mt-0 sm:text-left">
+                <div className="flex flex-col w-full sm:mt-0 sm:text-left">
                   <Dialog.Title
                     as="h3"
                     className="flex w-full flex-row items-center justify-between text-lg font-medium leading-6 text-gray-900"
-                  >
-                    <p>Mountain Details</p>
+                  >             
+                  <p className="bold">Mountain Details</p>       
                     <XMarkIcon
                       className="h-7 w-7 transition-all delay-150 hover:rotate-90"
                       onClick={closeModal}
                     />
                   </Dialog.Title>
+                  
+                  
+                  <div className="grid grid-cols-2 justify-center">
+                      <img
+                        src={data.url}>
+                      </img>
+                      <div className="hidden md:block overflow-y-scroll max-h-[400px]">
+                        <div className="px-10 py-3">
+                          <iframe
+                          src="https://api.echo3d.com/webar?secKey=Izkby9ofQngS4y0HofpxZOAJ&key=wandering-tooth-7184&entry=9c5c57fd-dd22-421a-8e38-49d3a70a164a">
+                          </iframe>
+                        </div>
+                        <div className="px-10 py-3">
+                          <iframe
+                          src="https://api.echo3d.com/webar?secKey=Izkby9ofQngS4y0HofpxZOAJ&key=wandering-tooth-7184&entry=9c5c57fd-dd22-421a-8e38-49d3a70a164a">
+                          </iframe>
+                        </div>
+                      </div> 
+                    </div>
                 </div>
+               
               </Dialog.Panel>
             </Transition.Child>
           </div>

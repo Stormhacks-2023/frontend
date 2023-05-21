@@ -18,14 +18,8 @@ function MountainModal({ isOpen, setIsOpen, data }: IMountainDataProps) {
   const { data: iFrameList = [], isLoading: isIFrameListLoading } =
     useGetIFrameList();
 
-  console.log(iFrameList, isIFrameListLoading);
-
   const { data: animalListByMountain, isLoading: isAnimalListByMountain } =
     useGetAnimalListByMoutain("surrey_mountain");
-
-  console.log(animalListByMountain, isAnimalListByMountain);
-
-  Object.keys(iFrameList).map((item, i) => console.log(iFrameList[item].id));
 
   return (
     <Transition.Root show={isOpen} as={Fragment}>

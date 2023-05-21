@@ -16,10 +16,6 @@ export const useGetIFrameListByName = (name: string, options = {}) =>
   });
 
 export const useGetIFrameListByTopography = (id: any, options = {}) =>
-  useQuery(
-    ["iFrameListTopography", name],
-    () => getIFrameListByTopography(id),
-    {
-      ...options,
-    }
-  );
+  useQuery(["iFrameListTopography", id], () => getIFrameListByTopography(id), {
+    ...options,
+  });

@@ -1,11 +1,13 @@
 import api from "./BaseService";
 
 export const getIFrameList = async () => {
-  return await api.get("/api/echo");
+  const { data } = await api.get("/api/echo");
+  return data;
 };
 
 export const getIFrameListByName = async (name: string) => {
-  return await api.get(`/api/echo/search/:${name}`);
+  const { data } = await api.get(`/api/echo/search/:${name}`);
+  return data;
 };
 
 export const getIFrameListByTopography = async (id: any) => {

@@ -50,7 +50,7 @@ function RatingModal({ isOpen, setIsOpen, data }: IRatingDataProps) {
               leaveFrom="opacity-100 translate-y-0 sm:scale-100"
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
-              <Dialog.Panel className="relative flex w-[70%] transform flex-col space-x-3 overflow-hidden bg-white px-4 pb-4 pt-5 shadow-xl transition-all sm:flex-row">
+              <Dialog.Panel className="rounded-xl relative flex w-[70%] transform flex-col space-x-3 overflow-hidden bg-white px-4 pb-4 pt-5 shadow-xl transition-all sm:flex-row">
                 <div className="flex w-full flex-col sm:mt-0 sm:text-left">
                   <div>
                     <Dialog.Title

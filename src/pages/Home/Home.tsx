@@ -57,6 +57,7 @@ function Home() {
     const replacedStr = lowerCaseStr.replace(/\s+/g, '_');
     return replacedStr;
   }
+  
 
   return (
     <div className="absolute top-20 flex w-full flex-col items-center">
@@ -66,12 +67,12 @@ function Home() {
           className="h-10 w-full flex-1 rounded-xl border border-gray-400 bg-white px-5 text-gray-700 opacity-70 shadow outline-none ring-0 hover:opacity-100 focus:border-0 focus:opacity-100 focus:ring-0"
           value={text}
           autoComplete="false"
-          placeholder="Type here ..."
+          placeholder="Type the name of the mountain here..."
           onChange={(e) => setText(e.target.value)}
         />
       </div>
 
-      <div className="mt-6">
+      <div className="mt-6 rounded-xl">
         {mountainName ? (
           <div className="grid grid-cols-2 gap-5">
             <div onClick={openMountainModal} className="cursor-pointer ">
@@ -163,7 +164,7 @@ function Home() {
         isOpen={isTopologyModalOpen}
         setIsOpen={setIsTopologyModalOpen}
         data={{
-          url: `https://stormhacks-2023-t5ql44yo2q-uw.a.run.app/images/${text}.png`,
+          url: `https://stormhacks-2023-t5ql44yo2q-uw.a.run.app/images/${convertString(text)}.png`,
           text: text,
         }}
       />

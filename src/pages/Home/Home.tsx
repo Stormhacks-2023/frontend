@@ -1,12 +1,34 @@
 import { useState } from "react";
 import { useKeyPress } from "../../hooks";
 import MountainModal from "./MountainModal";
+import {
+  useGetIFrameList,
+  useGetIFrameListByName,
+  useGetIFrameListByTopography,
+} from "../../queries";
 
 function Home() {
   const [text, setText] = useState<string>("");
   const isEnterPressed = useKeyPress("Enter");
 
   const [isMountainModalOpen, setIsMountainModalOpen] = useState(false);
+
+  // const { data: iFrameListByName, isLoading: isIFrameListByNameLoading } =
+  //   useGetIFrameListByName(text);
+
+  // console.log(iFrameListByName, isIFrameListByNameLoading);
+
+  const { data: iFrameList, isLoading: isIFrameListLoading } =
+    useGetIFrameList();
+
+  console.log(iFrameList, isIFrameListLoading);
+
+  // const {
+  //   data: iFrameListByTopography,
+  //   isLoading: isIFrameListByTopographyLoading,
+  // } = useGetIFrameListByTopography(text);
+
+  // console.log(iFrameListByTopography, isIFrameListByTopographyLoading);
 
   if (isEnterPressed) {
     console.log(text);
@@ -28,7 +50,55 @@ function Home() {
           onChange={(e) => setText(e.target.value)}
         />
       </div>
-      <div className="mt-4">
+      <div className="mt-4 grid h-[590px] grid-cols-4 gap-2 overflow-y-scroll px-4">
+        <div className="bg-white" onClick={openModal}>
+          <img
+            src="https://stormhacks-2023-t5ql44yo2q-uw.a.run.app/images/burnaby_mountain.png"
+            className="cursor-pointer"
+          />
+        </div>
+        <div className="bg-white" onClick={openModal}>
+          <img
+            src="https://stormhacks-2023-t5ql44yo2q-uw.a.run.app/images/burnaby_mountain.png"
+            className="cursor-pointer"
+          />
+        </div>
+        <div className="bg-white" onClick={openModal}>
+          <img
+            src="https://stormhacks-2023-t5ql44yo2q-uw.a.run.app/images/burnaby_mountain.png"
+            className="cursor-pointer"
+          />
+        </div>
+        <div className="bg-white" onClick={openModal}>
+          <img
+            src="https://stormhacks-2023-t5ql44yo2q-uw.a.run.app/images/burnaby_mountain.png"
+            className="cursor-pointer"
+          />
+        </div>
+        <div className="bg-white" onClick={openModal}>
+          <img
+            src="https://stormhacks-2023-t5ql44yo2q-uw.a.run.app/images/burnaby_mountain.png"
+            className="cursor-pointer"
+          />
+        </div>
+        <div className="bg-white" onClick={openModal}>
+          <img
+            src="https://stormhacks-2023-t5ql44yo2q-uw.a.run.app/images/burnaby_mountain.png"
+            className="cursor-pointer"
+          />
+        </div>
+        <div className="bg-white" onClick={openModal}>
+          <img
+            src="https://stormhacks-2023-t5ql44yo2q-uw.a.run.app/images/burnaby_mountain.png"
+            className="cursor-pointer"
+          />
+        </div>
+        <div className="bg-white" onClick={openModal}>
+          <img
+            src="https://stormhacks-2023-t5ql44yo2q-uw.a.run.app/images/burnaby_mountain.png"
+            className="cursor-pointer"
+          />
+        </div>
         <div className="bg-white" onClick={openModal}>
           <img
             src="https://stormhacks-2023-t5ql44yo2q-uw.a.run.app/images/burnaby_mountain.png"
@@ -43,9 +113,6 @@ function Home() {
           url: "https://stormhacks-2023-t5ql44yo2q-uw.a.run.app/images/burnaby_mountain.png",
         }}
       />
-      {/* <iframe
-      src="https://api.echo3d.com/webar?secKey=Izkby9ofQngS4y0HofpxZOAJ&key=wandering-tooth-7184&entry=9c5c57fd-dd22-421a-8e38-49d3a70a164a"
-    ></iframe> */}
     </div>
   );
 }

@@ -15,10 +15,12 @@
     "@tanstack/react-query": "^4.29.7",
     "@tanstack/react-query-devtools": "^4.29.7",
     "axios": "^1.4.0",
+    "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.1",
-    "react-spinners": "^0.13.8"
+    "react-spinners": "^0.13.8",
+    "typewriter-effect": "^2.19.0"
   },
   "devDependencies": {
     "@heroicons/react": "^2.0.18",

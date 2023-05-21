@@ -1,21 +1,14 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import { XMarkIcon } from "@heroicons/react/24/solid";
-import {
-  useGetMountainImageByName,
-  useGetMountainInfoByName,
-} from "../../queries";
 
-interface IMountainDataProps {
+interface ITopologyDataProps {
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
   data: any;
 }
 
-function MountainModal({ isOpen, setIsOpen, data }: IMountainDataProps) {
-  const { data: mountainInfo } = useGetMountainInfoByName(data.text);
-  const { data: mountainImage } = useGetMountainImageByName(data.text);
-
+function TopologyModal({ isOpen, setIsOpen, data }: ITopologyDataProps) {
   const closeModal = () => {
     setIsOpen(false);
   };
@@ -53,7 +46,7 @@ function MountainModal({ isOpen, setIsOpen, data }: IMountainDataProps) {
                       as="h3"
                       className="flex w-full flex-row items-center justify-between text-lg font-medium leading-6 text-gray-900"
                     >
-                      <p className="bold">Mountain Details</p>
+                      <p className="bold">Topology Details</p>
                       <XMarkIcon
                         className="h-7 w-7 transition-all delay-150 hover:rotate-90"
                         onClick={closeModal}
@@ -61,8 +54,7 @@ function MountainModal({ isOpen, setIsOpen, data }: IMountainDataProps) {
                     </Dialog.Title>
                   </div>
                   <div>
-                    <img src={mountainImage?.data} />
-                    <p className="text-black">{mountainInfo?.data}</p>
+                    <img src={data.url} />
                   </div>
                 </div>
               </Dialog.Panel>
@@ -74,4 +66,4 @@ function MountainModal({ isOpen, setIsOpen, data }: IMountainDataProps) {
   );
 }
 
-export default MountainModal;
+export default TopologyModal;

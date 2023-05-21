@@ -18,7 +18,8 @@ function Home() {
 
   // console.log(iFrameListByName, isIFrameListByNameLoading);
 
-  const { data: iFrameList, isLoading: isIFrameListLoading } = useGetIFrameList();
+  const { data: iFrameList = [], isLoading: isIFrameListLoading } =
+    useGetIFrameList();
 
   console.log(iFrameList);
 
@@ -110,7 +111,6 @@ function Home() {
         setIsOpen={setIsMountainModalOpen}
         data={{
           url: "https://stormhacks-2023-t5ql44yo2q-uw.a.run.app/images/burnaby_mountain.png",
-          
         }}
       />
     </div>

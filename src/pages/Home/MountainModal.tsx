@@ -1,7 +1,8 @@
 import { Dialog, Transition } from "@headlessui/react";
-import { Fragment } from "react";
+import { CSSProperties, Fragment } from "react";
 import { XMarkIcon } from "@heroicons/react/24/solid";
 import { useGetIFrameList } from "../../queries";
+import ClipLoader from "react-spinners/ClipLoader";
 
 interface IMountainDataProps {
   isOpen: boolean;
@@ -13,16 +14,17 @@ function MountainModal({ isOpen, setIsOpen, data }: IMountainDataProps) {
   const closeModal = () => {
     setIsOpen(false);
   };
-  
+
   const { data: iFrameList, isLoading: isIFrameListLoading } =
-  useGetIFrameList();
+    useGetIFrameList();
 
   console.log(iFrameList, isIFrameListLoading);
 
-  if (!iFrameList) {
-    return <div></div>
-  }
-  
+  const override: CSSProperties = {
+    display: "block",
+    margin: "0 auto",
+    borderColor: "red",
+  };
 
   return (
     <Transition.Root show={isOpen} as={Fragment}>
@@ -51,35 +53,46 @@ function MountainModal({ isOpen, setIsOpen, data }: IMountainDataProps) {
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
               <Dialog.Panel className="relative flex w-[70%] transform flex-col space-x-3 overflow-hidden bg-white px-4 pb-4 pt-5 shadow-xl transition-all sm:flex-row">
-                <div className="flex flex-col w-full sm:mt-0 sm:text-left">
-                  <Dialog.Title
-                    as="h3"
-                    className="flex w-full flex-row items-center justify-between text-lg font-medium leading-6 text-gray-900"
-                  >             
-                  <p className="bold">Mountain Details</p>       
-                    <XMarkIcon
-                      className="h-7 w-7 transition-all delay-150 hover:rotate-90"
-                      onClick={closeModal}
-                    />
-                  </Dialog.Title>
-                  
-                  <div className="grid grid-cols-2 justify-center">
-                      <img
-                        src={data.url}>
-                      </img>
-                      <div className="hidden md:block overflow-y-scroll max-h-[400px]">
-                      {iFrameList?.map((element) => (
-                      <div key={element.id} className="px-10 py-3">
-                        <iframe
-                          src={`https://api.echo3d.com/webar?secKey=Izkby9ofQngS4y0HofpxZOAJ&key=wandering-tooth-7184&entry=${element.id}`}
-                        ></iframe>
-                      </div>
-                    ))}
+                <div className="flex w-full flex-col sm:mt-0 sm:text-left">
+                  {isIFrameListLoading ? (
+                    <div>
+                      <ClipLoader
+                        color={"green"}
+                        loading={isIFrameListLoading}
+                        size={150}
+                        cssOverride={override}
+                        aria-label="Loading Spinner"
+                        data-testid="loader"
+                      />
+                    </div>
+                  ) : (
+                    <div>
+                      <Dialog.Title
+                        as="h3"
+                        className="flex w-full flex-row items-center justify-between text-lg font-medium leading-6 text-gray-900"
+                      >
+                        <p className="bold">Mountain Details</p>
+                        <XMarkIcon
+                          className="h-7 w-7 transition-all delay-150 hover:rotate-90"
+                          onClick={closeModal}
+                        />
+                      </Dialog.Title>
+
+                      <div className="grid grid-cols-2 justify-center">
+                        <img src={data.url}></img>
+                        <div className="hidden max-h-[400px] overflow-y-scroll md:block">
+                          {[iFrameList]?.map((element) => (
+                            <div key={element?.id} className="px-10 py-3">
+                              <iframe
+                                src={`https://api.echo3d.com/webar?secKey=Izkby9ofQngS4y0HofpxZOAJ&key=wandering-tooth-7184&entry=${element?.id}`}
+                              ></iframe>
+                            </div>
+                          ))}
                         </div>
-                    </div> 
-                  
+                      </div>
+                    </div>
+                  )}
                 </div>
-               
               </Dialog.Panel>
             </Transition.Child>
           </div>

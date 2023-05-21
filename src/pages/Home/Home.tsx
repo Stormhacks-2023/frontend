@@ -1,11 +1,7 @@
 import { useState } from "react";
 import { useKeyPress } from "../../hooks";
 import MountainModal from "./MountainModal";
-import {
-  useGetIFrameList,
-  useGetIFrameListByName,
-  useGetIFrameListByTopography,
-} from "../../queries";
+import { useGetMountainByName } from "../../queries";
 
 function Home() {
   const [text, setText] = useState<string>("");
@@ -13,17 +9,10 @@ function Home() {
 
   const [isMountainModalOpen, setIsMountainModalOpen] = useState(false);
 
-  const { data: iFrameListByName, isLoading: isIFrameListByNameLoading } =
-    useGetIFrameListByName(text);
+  const { data: mountainListName, isLoading: isMountainListName } =
+    useGetMountainByName(text);
 
-  console.log(iFrameListByName, isIFrameListByNameLoading);
-
-  // const {
-  //   data: iFrameListByTopography,
-  //   isLoading: isIFrameListByTopographyLoading,
-  // } = useGetIFrameListByTopography(text);
-
-  // console.log(iFrameListByTopography, isIFrameListByTopographyLoading);
+  console.log(mountainListName, isMountainListName);
 
   if (isEnterPressed) {
     console.log(text);

@@ -25,12 +25,6 @@ function MountainModal({ isOpen, setIsOpen, data }: IMountainDataProps) {
 
   console.log(animalListByMountain, isAnimalListByMountain);
 
-  const override: CSSProperties = {
-    display: "block",
-    margin: "0 auto",
-    borderColor: "red",
-  };
-
   return (
     <Transition.Root show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-50" onClose={closeModal}>
@@ -75,7 +69,7 @@ function MountainModal({ isOpen, setIsOpen, data }: IMountainDataProps) {
                       <img src={data.url}></img>
                       <div className="hidden max-h-[400px] overflow-y-scroll md:block">
                         {[iFrameList]?.map((element) => (
-                          <div key={`element?.id`} className="px-10 py-3">
+                          <div key={`${element?.id}`} className="px-10 py-3">
                             <iframe
                               src={`https://api.echo3d.com/webar?secKey=Izkby9ofQngS4y0HofpxZOAJ&key=wandering-tooth-7184&entry=${element?.id}`}
                             ></iframe>

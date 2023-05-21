@@ -12,8 +12,6 @@ function Home() {
   const { data: mountainListName, isLoading: isMountainListName } =
     useGetMountainByName(text);
 
-  console.log(mountainListName, isMountainListName);
-
   if (isEnterPressed) {
     console.log(text);
   }

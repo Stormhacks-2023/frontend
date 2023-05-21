@@ -15,7 +15,7 @@ function MountainModal({ isOpen, setIsOpen, data }: IMountainDataProps) {
     setIsOpen(false);
   };
 
-  const { data: iFrameList, isLoading: isIFrameListLoading } =
+  const { data: iFrameList = [], isLoading: isIFrameListLoading } =
     useGetIFrameList();
 
   console.log(iFrameList, isIFrameListLoading);
@@ -24,6 +24,8 @@ function MountainModal({ isOpen, setIsOpen, data }: IMountainDataProps) {
     useGetAnimalListByMoutain("surrey_mountain");
 
   console.log(animalListByMountain, isAnimalListByMountain);
+
+  Object.keys(iFrameList).map((item, i) => console.log(iFrameList[item].id));
 
   return (
     <Transition.Root show={isOpen} as={Fragment}>
@@ -68,10 +70,13 @@ function MountainModal({ isOpen, setIsOpen, data }: IMountainDataProps) {
                     <div className="grid grid-cols-2 justify-center">
                       <img src={data.url}></img>
                       <div className="hidden max-h-[400px] overflow-y-scroll md:block">
-                        {[iFrameList]?.map((element) => (
-                          <div key={`${element?.id}`} className="px-10 py-3">
+                        {Object.keys(iFrameList).map((item) => (
+                          <div key={`${iFrameList[item]?.id}`}>
                             <iframe
-                              src={`https://api.echo3d.com/webar?secKey=Izkby9ofQngS4y0HofpxZOAJ&key=wandering-tooth-7184&entry=${element?.id}`}
+                              src={
+                                `https://api.echo3d.com/webar?secKey=Izkby9ofQngS4y0HofpxZOAJ&key=wandering-tooth-7184&entry=` +
+                                `${iFrameList[item]?.id}`
+                              }
                             ></iframe>
                           </div>
                         ))}

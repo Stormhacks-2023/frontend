@@ -2,7 +2,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import { CSSProperties, Fragment } from "react";
 import { XMarkIcon } from "@heroicons/react/24/solid";
 import { useGetIFrameList } from "../../queries";
-import ClipLoader from "react-spinners/ClipLoader";
+import { useGetAnimalListByMoutain } from "../../queries/AnimalsQueries";
 
 interface IMountainDataProps {
   isOpen: boolean;
@@ -19,6 +19,11 @@ function MountainModal({ isOpen, setIsOpen, data }: IMountainDataProps) {
     useGetIFrameList();
 
   console.log(iFrameList, isIFrameListLoading);
+
+  const { data: animalListByMountain, isLoading: isAnimalListByMountain } =
+    useGetAnimalListByMoutain("surrey_mountain");
+
+  console.log(animalListByMountain, isAnimalListByMountain);
 
   const override: CSSProperties = {
     display: "block",
@@ -54,44 +59,31 @@ function MountainModal({ isOpen, setIsOpen, data }: IMountainDataProps) {
             >
               <Dialog.Panel className="relative flex w-[70%] transform flex-col space-x-3 overflow-hidden bg-white px-4 pb-4 pt-5 shadow-xl transition-all sm:flex-row">
                 <div className="flex w-full flex-col sm:mt-0 sm:text-left">
-                  {isIFrameListLoading ? (
-                    <div>
-                      <ClipLoader
-                        color={"green"}
-                        loading={isIFrameListLoading}
-                        size={150}
-                        cssOverride={override}
-                        aria-label="Loading Spinner"
-                        data-testid="loader"
+                  <div>
+                    <Dialog.Title
+                      as="h3"
+                      className="flex w-full flex-row items-center justify-between text-lg font-medium leading-6 text-gray-900"
+                    >
+                      <p className="bold">Mountain Details</p>
+                      <XMarkIcon
+                        className="h-7 w-7 transition-all delay-150 hover:rotate-90"
+                        onClick={closeModal}
                       />
-                    </div>
-                  ) : (
-                    <div>
-                      <Dialog.Title
-                        as="h3"
-                        className="flex w-full flex-row items-center justify-between text-lg font-medium leading-6 text-gray-900"
-                      >
-                        <p className="bold">Mountain Details</p>
-                        <XMarkIcon
-                          className="h-7 w-7 transition-all delay-150 hover:rotate-90"
-                          onClick={closeModal}
-                        />
-                      </Dialog.Title>
+                    </Dialog.Title>
 
-                      <div className="grid grid-cols-2 justify-center">
-                        <img src={data.url}></img>
-                        <div className="hidden max-h-[400px] overflow-y-scroll md:block">
-                          {[iFrameList]?.map((element) => (
-                            <div key={element?.id} className="px-10 py-3">
-                              <iframe
-                                src={`https://api.echo3d.com/webar?secKey=Izkby9ofQngS4y0HofpxZOAJ&key=wandering-tooth-7184&entry=${element?.id}`}
-                              ></iframe>
-                            </div>
-                          ))}
-                        </div>
+                    <div className="grid grid-cols-2 justify-center">
+                      <img src={data.url}></img>
+                      <div className="hidden max-h-[400px] overflow-y-scroll md:block">
+                        {[iFrameList]?.map((element) => (
+                          <div key={`element?.id`} className="px-10 py-3">
+                            <iframe
+                              src={`https://api.echo3d.com/webar?secKey=Izkby9ofQngS4y0HofpxZOAJ&key=wandering-tooth-7184&entry=${element?.id}`}
+                            ></iframe>
+                          </div>
+                        ))}
                       </div>
                     </div>
-                  )}
+                  </div>
                 </div>
               </Dialog.Panel>
             </Transition.Child>

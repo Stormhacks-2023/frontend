@@ -13,15 +13,10 @@ function Home() {
 
   const [isMountainModalOpen, setIsMountainModalOpen] = useState(false);
 
-  // const { data: iFrameListByName, isLoading: isIFrameListByNameLoading } =
-  //   useGetIFrameListByName(text);
+  const { data: iFrameListByName, isLoading: isIFrameListByNameLoading } =
+    useGetIFrameListByName(text);
 
-  // console.log(iFrameListByName, isIFrameListByNameLoading);
-
-  const { data: iFrameList = [], isLoading: isIFrameListLoading } =
-    useGetIFrameList();
-
-  console.log(iFrameList);
+  console.log(iFrameListByName, isIFrameListByNameLoading);
 
   // const {
   //   data: iFrameListByTopography,

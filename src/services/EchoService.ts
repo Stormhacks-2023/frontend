@@ -6,10 +6,10 @@ export const getIFrameList = async () => {
 };
 
 export const getIFrameListByName = async (name: string) => {
-  const { data } = await api.get(`/api/echo/search/:${name}`);
+  const { data } = await api.get(`/api/echo/search/${name}`);
   return data;
 };
 
 export const getIFrameListByTopography = async (id: any) => {
-  return await api.get(`/api/echo/topo/:${id}`);
+  return await api.get(`/api/echo/topo/${id}`);
 };

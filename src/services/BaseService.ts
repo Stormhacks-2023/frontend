@@ -11,8 +11,6 @@ const axiosInstance = axios.create({
 });
 
 axiosInstance.interceptors.response.use(undefined, (error) => {
-  console.log("error", error);
-  console.log("error", error.response);
   if (error?.response?.status !== 401) {
     return Promise.reject(error);
   }

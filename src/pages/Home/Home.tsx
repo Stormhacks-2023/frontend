@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useKeyPress } from "../../hooks";
 import MountainModal from "./MountainModal";
+import Typewriter from "typewriter-effect";
 import { useGetMountainByName } from "../../queries";
 
 function Home() {
@@ -22,6 +23,8 @@ function Home() {
     setIsMountainModalOpen(true);
   };
 
+  console.log("length", [mountainListName].length);
+
   return (
     <div className="absolute top-20 flex w-full flex-col items-center">
       <div className="mt-2 w-[80%]">
@@ -34,11 +37,13 @@ function Home() {
           onChange={(e) => setText(e.target.value)}
         />
       </div>
+
       <div className="mt-4 grid max-h-[590px] grid-cols-4 gap-2 overflow-y-scroll px-4">
         <div className="bg-white" onClick={openModal}>
           <img src={mountainListName} className="cursor-pointer" />
         </div>
       </div>
+
       <MountainModal
         isOpen={isMountainModalOpen}
         setIsOpen={setIsMountainModalOpen}

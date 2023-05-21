@@ -61,7 +61,22 @@ function RatingModal({ isOpen, setIsOpen, data }: IRatingDataProps) {
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+              <Dialog.Panel className="relative flex w-[70%] transform flex-col space-x-3 overflow-hidden rounded-xl bg-white px-4 pb-4 pt-5 shadow-xl transition-all sm:flex-row">
+                <div className="flex w-full flex-col sm:mt-0 sm:text-left">
+                  <div>
+                    <Dialog.Title
+                      as="h3"
+                      className="flex w-full flex-row items-center justify-between text-lg font-medium leading-6 text-gray-900"
+                    >
+                      <p className="bold">Rating Details</p>
+                      <XMarkIcon
+                        className="h-7 w-7 transition-all delay-150 hover:rotate-90"
+                        onClick={closeModal}
+                      />
+                    </Dialog.Title>
+                  </div>
+                </div>
+              </Dialog.Panel>
             </Transition.Child>
 
             <form

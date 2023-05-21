@@ -2,6 +2,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import { XMarkIcon } from "@heroicons/react/24/solid";
 import { useGetAnimalListByMoutain, useGetIFrameList } from "../../queries";
+import { getAnimalsByMountain } from "../../services";
 
 interface IAnimalDataProps {
   isOpen: boolean;
@@ -17,7 +18,8 @@ function AnimalModal({ isOpen, setIsOpen, data }: IAnimalDataProps) {
   const { data: iFrameList = [] } = useGetIFrameList();
 
   const { data: animalListByMountain } = useGetAnimalListByMoutain(data.text);
-  console.log(animalListByMountain);
+
+
 
   return (
     <Transition.Root show={isOpen} as={Fragment}>
@@ -60,11 +62,18 @@ function AnimalModal({ isOpen, setIsOpen, data }: IAnimalDataProps) {
                     </Dialog.Title>
 
                     <div className="grid grid-cols-2 justify-center">
-                      <img src={data.url}></img>
+                      <div className="overflow-y-scroll">
+                        {animalListByMountain?.map((animal, index) => (
+                        <div key={index}>
+                          <b>{animal.name}</b>
+                          <p>{animal.info}</p>
+                        </div>
+                        ))}
+                      </div>
                       <div className="hidden max-h-[400px] overflow-y-scroll md:block">
                         {Object.keys(iFrameList)?.map((item) => (
                           <div key={`${iFrameList[item]?.id}`}>
-                            <iframe
+                            <iframe className=" mb-5"
                               src={
                                 `https://api.echo3d.com/webar?secKey=Izkby9ofQngS4y0HofpxZOAJ&key=wandering-tooth-7184&entry=` +
                                 `${iFrameList[item]?.id}`

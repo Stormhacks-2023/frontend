@@ -9,14 +9,20 @@ interface IRatingDataProps {
   data: any;
 }
 
+function convertString(str: string): string {
+  const lowerCaseStr = str.toLowerCase();
+  const replacedStr = lowerCaseStr.replace(/\s+/g, '_');
+  return replacedStr;
+}
+
 function RatingModal({ isOpen, setIsOpen, data }: IRatingDataProps) {
-  const { data: ratingList } = useGetRatingOfMountain(data.text);
-
-  console.log(ratingList);
-
+  // HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+  const { data: ratingList } = useGetRatingOfMountain(convertString(data.text));
+  console.log(ratingList)
   const closeModal = () => {
     setIsOpen(false);
   };
+
 
   return (
     <Transition.Root show={isOpen} as={Fragment}>
